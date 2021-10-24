@@ -120,7 +120,7 @@ class RequestController {
         var xhttp = new XMLHttpRequest();
       
         xhttp.open("GET",requestUrl);
-         xhttp.setRequestHeader( 'Access-Control-Allow-Origin', '*');
+        // xhttp.setRequestHeader( 'Access-Control-Allow-Origin', '*');
         // xhttp.setRequestHeader( 'Content-Type', 'application/json' );
         
        
