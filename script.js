@@ -8,7 +8,7 @@
  * 5. Adjust UI states accordingly
  */
 
-class DomInterface {
+ class DomInterface {
     constructor() {
         this.form = document.querySelector('#comic-form');
         this.searchField = document.querySelector('#search-input');
@@ -77,7 +77,7 @@ class RequestController {
         this.corsHeader = 'https://the-ultimate-api-challenge.herokuapp.com';
         this.apiUrl = 'https://xkcd.com';
         this.apiUrlFormat = 'info.0.json';
-        this.superAgent = superagent;
+        //this.superAgent =;
 
         this.currentComicsNumber = 0;
         this.maxComicsNumber = 0;
@@ -102,18 +102,48 @@ class RequestController {
     }
 
     getCurrentComics() {
-        const requestUrl = `${this.corsHeader}/${this.apiUrl}/${this.apiUrlFormat}`;
+       // const requestUrl = `${this.corsHeader}/${this.apiUrl}/${this.apiUrlFormat}`;
+       const requestUrl = `${this.apiUrl}/${this.apiUrlFormat}`;
+        // this.superAgent.get(requestUrl).end((error, response) => {
+        //     if (error) {
+        //         this.DomInterface.showError();
+        //     }
+        //     const data = response.body;
 
-        this.superAgent.get(requestUrl).end((error, response) => {
-            if (error) {
-                this.DomInterface.showError();
-            }
-            const data = response.body;
+        //     this.DomInterface.showComics(data);
+        //     this.setCurrentComicsNumber(data.num);
+        //     this.setMaxComicsNumber(data.num);
+        // });
 
+
+        //alert(requestUrl);
+        var xhttp = new XMLHttpRequest();
+      
+        xhttp.open("GET",requestUrl);
+        // xhttp.setRequestHeader( 'Access-Control-Allow-Origin', '*');
+        // xhttp.setRequestHeader( 'Content-Type', 'application/json' );
+        // xhttp.setRequestHeader( ' Access-Control-Allow-Headers', 'accept' );
+       
+
+        xhttp.send();
+        xhttp.onload = () =>{
+           
+              
+               var data=JSON.parse(xhttp.response);
+               alert(data);
             this.DomInterface.showComics(data);
-            this.setCurrentComicsNumber(data.num);
-            this.setMaxComicsNumber(data.num);
-        });
+           // this.setCurrentComicsNumber(data.num);
+            //this.setMaxComicsNumber(data.num);
+
+           
+          
+        
+        }
+        xhttp.onerror  =()=>{
+            alert(xhttp.responseText);
+        }
+
+       
     }
 
     getComicsByNumber(number) {
