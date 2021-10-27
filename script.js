@@ -183,15 +183,18 @@ class RequestController {
     requestPreviousComics() {
         const requestedComicsNumber = this.currentComicsNumber - 1;
         console.log({ requestedComicsNumber });
-        if (requestedComicsNumber < 1) return;
+        if (requestedComicsNumber < 1) {
+            alert("You already reached to page 1st !!");
+            return;
 
-        this.getComicsByNumber(requestedComicsNumber);
+                }        
+            this.getComicsByNumber(requestedComicsNumber);
     }
 
     requestNextComics() {
         const requestedComicsNumber = this.currentComicsNumber + 1;
         if (requestedComicsNumber > this.maxComicsNumber) { 
-            alert("You are already on Latest comic");
+            alert("You are already on the Latest comic !!");
             return;}
 
         this.getComicsByNumber(requestedComicsNumber);
