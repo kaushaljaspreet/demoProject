@@ -58,12 +58,15 @@ this.comicId=document.querySelector('#comic-id-number');
 
     showComics(data) {
         const { title, img, day , month , year, transcript, num } = data;
+        
         this.title.innerHTML = title;
         this.comicId.innerHTML= "Comic Id - "+num;
         
         this.createdDate.innerHTML="Created on - "+ day +"/"+ month+"/"+year;
         this.image.src = img;
-        this.transcriptData.innerHTML=transcript;
+        var data=transcript.replace(/(?:\r\n|\r|\n)/g, '<br>');
+
+        this.transcriptData.innerHTML=data;
         
         if (data.alt) this.image.alt = data.alt;
 

@@ -15,7 +15,7 @@
 
         <link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light" rel="stylesheet" />
         <link href="style.css" rel="stylesheet" />
-        <title>XKCD Comics | API</title>
+        <title>XKCD Comics Assignment</title>
     </head>
     <body>
         <div id="loader" class="loader__container d-flex align-items-center">
@@ -23,11 +23,28 @@
         </div>
 
         <main class="main__container">
-            <h1 class="main__title pt-5 mb-4">XKCD jaspreet kaur Comics</h1>
+            <h1 class="main__title pt-5 mb-4">XKCD Comics (Jaspreet task)</h1>
 
             <span id="error"></span>
 
             <div class="container">
+                <div class="pt-5 mb-4">
+                    <h4 class="mb-3">Search Comics by ID</h4>
+                    <form id="comic-form" class="form-inline d-flex justify-content-center">
+                        <div>
+                            <input
+                                aria-label="find comics by ID"
+                                type="number"
+                                id="search-input"
+                                class="form-control form-control-sm mr-3"
+                                placeholder="Comics number"
+                                required
+                            />
+                        </div>
+                        <button type="submit" class="btn btn-sm btn-dark">find</button>
+                    </form>
+                    <span id="form-error"></span>
+                </div>
                 <div>
                     <button id="request-prev" class="btn btn-outline-dark mb-2">&lsaquo; Prev</button>
                     <button id="request-random" class="btn btn-outline-dark mb-2">Random</button>
@@ -38,6 +55,7 @@
                     <button id="request-last" class="btn btn-outline-dark mb-2">Last &raquo;</button>
                 </div>
             </div>
+            
 
             <div class="container my-4">
                 <h2 id="comic-title">Loading ...</h2>
@@ -60,23 +78,7 @@
             </div>
             
 
-            <div class="pt-5 mb-4">
-                <h4 class="mb-3">Search Comics by ID</h4>
-                <form id="comic-form" class="form-inline d-flex justify-content-center">
-                    <div>
-                        <input
-                            aria-label="find comics by ID"
-                            type="number"
-                            id="search-input"
-                            class="form-control form-control-sm mr-3"
-                            placeholder="Comics number"
-                            required
-                        />
-                    </div>
-                    <button type="submit" class="btn btn-sm btn-dark">find</button>
-                </form>
-                <span id="form-error"></span>
-            </div>
+          
         </main>
     </body>
     <script src="https://unpkg.com/superagent"></script>

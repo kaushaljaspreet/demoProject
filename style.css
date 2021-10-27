@@ -40,6 +40,9 @@ body {
     background-color: #343a3f;
     animation: flip 1s infinite;
 }
+img {
+    border: 3px solid #555;
+  }
 
 @keyframes flip {
     0% {
@@ -47,7 +50,7 @@ body {
     }
 
     50% {
-        transform: rotateY(180deg);
+        transform: rotateY(180deg)
     }
 
     100% {
