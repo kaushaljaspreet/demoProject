@@ -5,7 +5,10 @@ class CodeInterface {
         this.searchField = document.querySelector('#search-input');
 
         this.title = document.querySelector('#comic-title');
+        this.createdDate = document.querySelector('#comic-created_date');
         this.image = document.querySelector('#comic-image');
+        this.transcriptData = document.querySelector('#comic-transcript_data');
+this.comicId=document.querySelector('#comic-id-number');
 
         this.error = document.querySelector('#error');
         this.formError = document.querySelector('#form-error');
@@ -17,11 +20,13 @@ class CodeInterface {
             random: document.querySelector('#request-random'),
             first: document.querySelector('#request-first'),
             last: document.querySelector('#request-last'),
+        
         };
     }
 
     clearResults() {
         this.title.innerHTML = 'Loading...';
+        this.createdDate.innerHTML='Loading...';
         this.image.src = '';
         this.image.alt = '';
     }
@@ -52,10 +57,14 @@ class CodeInterface {
     }
 
     showComics(data) {
-        const { title, img } = data;
-
+        const { title, img, day , month , year, transcript, num } = data;
         this.title.innerHTML = title;
+        this.comicId.innerHTML= "Comic Id - "+num;
+        
+        this.createdDate.innerHTML="Created on - "+ day +"/"+ month+"/"+year;
         this.image.src = img;
+        this.transcriptData.innerHTML=transcript;
+        
         if (data.alt) this.image.alt = data.alt;
 
         this.hideLoader();
@@ -65,6 +74,7 @@ class CodeInterface {
 class RequestController {
     constructor() {
         this.CodeInterface = new CodeInterface();
+        
         this.corsHeader = 'https://shrouded-gorge-14113.herokuapp.com';
         this.apiUrl = 'https://xkcd.com';
         this.apiUrlFormat = 'info.0.json';
