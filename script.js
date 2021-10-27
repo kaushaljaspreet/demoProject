@@ -18,8 +18,7 @@ this.comicId=document.querySelector('#comic-id-number');
             previous: document.querySelector('#request-prev'),
             next: document.querySelector('#request-next'),
             random: document.querySelector('#request-random'),
-            first: document.querySelector('#request-first'),
-            last: document.querySelector('#request-last'),
+           
         
         };
     }
@@ -230,9 +229,7 @@ class RequestController {
             this.getComicsByNumber(this.getRandomComicsNumber())
         );
 
-        this.CodeInterface.controls.first.addEventListener('click', () => this.getComicsByNumber(1));
-        this.CodeInterface.controls.last.addEventListener('click', () => this.getComicsByNumber(this.maxComicsNumber));
-
+        
         this.CodeInterface.controls.previous.addEventListener('click', () => this.requestPreviousComics());
         this.CodeInterface.controls.next.addEventListener('click', () => this.requestNextComics());
 
